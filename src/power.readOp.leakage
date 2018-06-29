@@ -1,0 +1,46 @@
+gpuwattch/core.cc:	IRF->area.set_area(IRF->area.get_area()+ IRF->local_result.area*coredynp.num_pipelines*cdb_overhead);
+gpuwattch/core.cc:	area.set_area(area.get_area()+ IRF->local_result.area
+gpuwattch/core.cc:	IRF->local_result.power.readOp.dynamic *= .33;
+gpuwattch/core.cc:	IRF->local_result.power.writeOp.dynamic *= .33;
+gpuwattch/core.cc:	IRF->local_result.power.readOp.dynamic *= .55;
+gpuwattch/core.cc:	IRF->local_result.power.writeOp.dynamic *= .55;
+gpuwattch/core.cc:	int_regfile_height= IRF->local_result.cache_ht*XML->sys.core[ithCore].number_hardware_threads*sqrt(cdb_overhead);
+gpuwattch/core.cc:		interface_ip.cache_sz            = XML->sys.core[ithCore].register_windows_size*IRF->l_ip.cache_sz*XML->sys.core[ithCore].number_hardware_threads;
+gpuwattch/core.cc:    	IRF->stats_t.readAc.access  = 4;
+gpuwattch/core.cc:    	IRF->stats_t.writeAc.access  = 4;
+gpuwattch/core.cc:    	IRF->tdp_stats = IRF->stats_t;
+gpuwattch/core.cc:    	IRF->stats_t.readAc.access  = 2;
+gpuwattch/core.cc:    	IRF->stats_t.writeAc.access  = 1;
+gpuwattch/core.cc:    	IRF->tdp_stats = IRF->stats_t;
+gpuwattch/core.cc:    	IRF->stats_t.readAc.access  = (XML->sys.core[ithCore].int_regfile_reads/32)*(4*2);///1.5; 
+gpuwattch/core.cc:    	IRF->stats_t.writeAc.access  = (XML->sys.core[ithCore].int_regfile_writes/32)*(4*2);///1.5;
+gpuwattch/core.cc:    	IRF->stats_t.readAc.access  = (XML->sys.core[ithCore].int_regfile_reads/32)*(2*4);///1.5;//TODO: no diff on archi and phy
+gpuwattch/core.cc:    	IRF->stats_t.writeAc.access  = (XML->sys.core[ithCore].int_regfile_writes/32)*(2*4);///1.5;
+gpuwattch/core.cc:    	IRF->rtp_stats = IRF->stats_t;
+gpuwattch/core.cc:      //cout<< "IRF read energy: "<<    IRF->local_result.power.readOp.dynamic<<endl;
+gpuwattch/core.cc:      //cout<< "IRF write energy: "<<    IRF->local_result.power.writeOp.dynamic<<endl;
+gpuwattch/core.cc:        	IRF->stats_t.readAc.access  = XML->sys.core[ithCore].int_regfile_reads +
+gpuwattch/core.cc:        	IRF->stats_t.writeAc.access  = XML->sys.core[ithCore].int_regfile_writes +
+gpuwattch/core.cc:        	IRF->rtp_stats = IRF->stats_t;
+gpuwattch/core.cc:	IRF->power_t.reset();
+gpuwattch/core.cc:	//IRF->power_t  =  IRF->power_t + IRF->local_result.power;// + xbar_rfu->power + arbiter_rfu->power;
+gpuwattch/core.cc:	IRF->power_t.readOp.dynamic  =  (IRF->stats_t.readAc.access*IRF->local_result.power.readOp.dynamic
+gpuwattch/core.cc:			+IRF->stats_t.writeAc.access*IRF->local_result.power.writeOp.dynamic);
+gpuwattch/core.cc:	  	//cout<<"pre: IRF_power_t: "<<IRF->power.readOp.dynamic<<" ("<<IRF->power.readOp.dynamic*clockRate<<") "<<" IRF_localresult: "<<
+gpuwattch/core.cc:		 //                   IRF->local_result.power.readOp.dynamic<<endl;
+gpuwattch/core.cc:	  IRF->power = (IRF->power_t) + IRF->local_result.power*pppm_lkg;
+gpuwattch/core.cc:	  IRF->power.readOp.dynamic=IRF->power_t.readOp.dynamic*1;
+gpuwattch/core.cc:	  power	    =  power + (IRF->power+OPC->power);
+gpuwattch/core.cc:		IRF->rt_power  =  IRF->power_t + IRF->local_result.power*pppm_lkg;/* *coredynp.pppm_lkg_multhread;*/
+gpuwattch/core.cc:		rt_power	   =  rt_power + (IRF->power_t /*+ FRF->power_t*/+xbar_rfu->rt_power+arbiter_rfu->rt_power+OPC->power_t);
+gpuwattch/core.cc:		cout << indent_str_next << "Area = " << IRF->area.get_area()*1e-6<< " mm^2" << endl;
+gpuwattch/core.cc:		cout << indent_str_next << "Peak Dynamic = " << IRF->power.readOp.dynamic*clockRate << " W" << endl;
+gpuwattch/core.cc:			<< (long_channel? IRF->power.readOp.longer_channel_leakage:IRF->power.readOp.leakage) <<" W" << endl;
+gpuwattch/core.cc:		cout << indent_str_next << "Gate Leakage = " << IRF->power.readOp.gate_leakage << " W" << endl;
+gpuwattch/core.cc:		cout << indent_str_next << "Runtime Dynamic = " << IRF->rt_power.readOp.dynamic/executionTime << " W" << endl;
+gpuwattch/core.cc:		cout << indent_str_next << "Integer RF    Peak Dynamic = " << IRF->rt_power.readOp.dynamic*clockRate << " W" << endl;
+gpuwattch/core.cc:		cout << indent_str_next << "Integer RF    Subthreshold Leakage = " << IRF->rt_power.readOp.leakage <<" W" << endl;
+gpuwattch/core.cc:		cout << indent_str_next << "Integer RF    Gate Leakage = " << IRF->rt_power.readOp.gate_leakage << " W" << endl;
+gpuwattch/core.h:		value+=((exu->rfu->IRF->local_result.power.readOp.dynamic/32)*(4*2)/*/1.5*/);
+gpuwattch/core.h:	float get_coefficient_regwrites_accesses(){return ((exu->rfu->IRF->local_result.power.writeOp.dynamic/32)*(4*2)/*/1.5*/);}
+tags:get_coefficient_regwrites_accesses	gpuwattch/core.h	/^	float get_coefficient_regwrites_accesses(){return ((exu->rfu->IRF->local_result.power.writeOp.dynamic\/32)*(4*2)\/*\/1.5*\/);}$/;"	f	class:Core
