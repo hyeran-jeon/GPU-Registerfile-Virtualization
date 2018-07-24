@@ -2,7 +2,7 @@
 
 This is a GPU register file virtualization code that was developed based on GPGPU-Sim for
 
-Hyeran Jeon, Gokul Subramanian Ravi, Nam Sung Kim, and Murali Annavaram, "GPGPU Register File Virtualization," The 48th IEEE/ACM International Symposium on Microarchitecture (MICRO), Waikiki, Hawaii, December 2015 (https://ieeexplore.ieee.org/document/7856616/)
+Hyeran Jeon, Gokul Subramanian Ravi, Nam Sung Kim, and Murali Annavaram, "GPGPU Register File Virtualization," The 48th IEEE/ACM International Symposium on Microarchitecture (MICRO), Waikiki, Hawaii, December 2015 (https://dl.acm.org/citation.cfm?id=2830784)
 
 
 * Compilation & Execution: The same with GPGPU-Sim
